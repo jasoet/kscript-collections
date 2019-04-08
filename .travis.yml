@@ -16,12 +16,14 @@ script:
 
 before_deploy:
 - rm distribution/.gitkeep
+- git config --local user.name "Deny Prasetyo"
+- git config --local user.email "jasoet87@gmail.com"
+- export TRAVIS_TAG=$(cat version.txt)
+- git tag $TRAVIS_TAG
 
 deploy:
   provider: releases
-  api_key: $(TOKEN)
+  api_key: "${TOKEN}"
   file_glob: true
   file: distribution/*
   skip_cleanup: true
-  on:
-    tags: true
