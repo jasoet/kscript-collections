@@ -7,6 +7,8 @@ out/
 logs
 *.log
 output/
+!dist/.gitkeep
+dist/*
 
 # Eclipse Setting
 /.metadata
@@ -21,7 +23,6 @@ target
 
 # Netbeans Ignore
 nbproject
-dist
 private
 
 #idea project

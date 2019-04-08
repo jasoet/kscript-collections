@@ -4,9 +4,7 @@ services:
   - docker
 
 before_install:
-  - mkdir output
-  - pwd
   - docker pull jasoet/cx-jvm:8
 
 script:
-  - docker run --rm -it -v $(pwd):/work -w /work/output jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
+  - docker run --rm -it -v $(pwd):/work -w /work/dist jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
