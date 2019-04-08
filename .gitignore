@@ -6,6 +6,7 @@ deploy
 out/
 logs
 *.log
+output/
 
 # Eclipse Setting
 /.metadata

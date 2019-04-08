@@ -44,7 +44,7 @@ inner class Cli : Runnable {
     var port: Int = 8080
 
     @Option(names = ["-u", "--url"], description = ["URL to be Mocked"])
-    var path: String = "/v2/configurations/{name}/latest"
+    var path: String = ""
 
     @Option(names = ["-c", "--content"], required = true, description = ["Base64 JSON Content that will be returned as response"])
     var jsonContent: String = ""

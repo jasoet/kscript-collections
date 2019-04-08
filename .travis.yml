@@ -1,0 +1,11 @@
+language: ruby
+
+services:
+  - docker
+
+before_install:
+  - mkdir output
+  - docker pull jasoet/cx-jvm:8
+
+script:
+  - docker run --rm -it -v $(PWD):/work -w /work/output jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
