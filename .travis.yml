@@ -1,10 +1,27 @@
 language: ruby
 
 services:
-  - docker
+- docker
+
+env:
+  global:
+    secure: O99jkd4lk828+FowCkwWpeOmutSHV44dVMGIjKVF01Ks7rgZAwQXn8Hg+CUG5ORQwoQtjUKe1eJukVNeFF4nyXtD2fWMVMwfTxB76aALcb9J1ho7Bw7svOBAalbF0DmIewyHvm+Q2vTz4C2VFZS8ezJ/kSN3OBEX2eJS/rQBo8lqpVfApmHxgqiMjy8QjGzDeWdvtA8hjxPG57+g36nwFc+c8cxKmOQL18Gb6HsedluToKlCwOhgJ2r0sQbHic3QS75dosmhj2VFIur6CbV2bUxmMtADdLimmwmRKzUCw9Gb+ckNRq+M1tSS/OxjYlWR+yegMVWQxLlcuE7xsUk4+6/dV3nEoAJ/CKEWakcUunXyRjhaaChJI0+KgbPrkye2cyf0MpaNpWFjqyHkiVYdfh1UcoT4RM9GHSEbqSOq3D5u4wI2/vfh2rGrqemo0fFjhglTKexXdE1CGq0oGS1NoqfE/6x0GsrlrbyRDoEPqmmQ4/2w7sTtd5gA0DLPs0W69iYEI34KAJtSTWcPwPiPQdWjFovLVitTTAXdtU49wNZBMunPhRBaPQ91cjyfcQxvEX5D93TmboNNEi/YsRfIVgdci0sW9Goyny6A7uIy9xOh0dfiD337Y3ZZ3n2ycNyZpG/dIg23q0MbleD8CnmvuRBF75S+7Wqxl1Cb0Hw2mRU=
 
 before_install:
-  - docker pull jasoet/cx-jvm:8
+- docker pull jasoet/cx-jvm:8
+- chmod 777 $(pwd)/distribution
 
 script:
-  - docker run --rm -it -v $(pwd):/work -w /work/distribution jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
+- docker run --rm -it -v $(pwd):/work -w /work/distribution jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
+
+before_deploy:
+- rm distribution/.gitkeep
+
+deploy:
+  provider: releases
+  api_key: $(TOKEN)
+  file_glob: true
+  file: distribution/*
+  skip_cleanup: true
+  on:
+    tags: true
