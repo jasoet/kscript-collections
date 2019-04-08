@@ -7,4 +7,4 @@ before_install:
   - docker pull jasoet/cx-jvm:8
 
 script:
-  - docker run --rm -it -v $(pwd):/work -w /work/dist jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
+  - docker run --rm -it -v $(pwd):/work -w /work/distribution jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts

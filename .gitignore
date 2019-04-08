@@ -7,8 +7,8 @@ out/
 logs
 *.log
 output/
-!dist/.gitkeep
-dist/*
+/distribution/*
+!/distribution/.gitkeep
 
 # Eclipse Setting
 /.metadata
