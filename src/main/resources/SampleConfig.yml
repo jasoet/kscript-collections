@@ -1,0 +1,32 @@
+configs:
+  - path: /test
+    content: >
+      {
+        "success": true,
+        "data": {
+          "APPLICATION_NAME": "Trivial Server",
+          "RABBIT_HOST": "s-trivial-server",
+          "RABBIT_USER": "jasoet"
+        }
+      }
+    contentType: application/json
+    statusCode: 200
+  - path: /coba
+    content: >
+      [
+        "data": {
+          "APPLICATION_NAME": "Trivial Server",
+          "RABBIT_HOST": "s-trivial-server",
+          "RABBIT_USER": "jasoet"
+        },
+        "content": {
+          "DUMP": "Dump Data",
+          "DUMP_STAMP": "1938837"
+        }
+      ]
+    contentType: application/json
+    statusCode: 200
+  - path: /error
+    content: ""
+    contentType: text/plain
+    statusCode: 500

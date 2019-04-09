@@ -12,13 +12,10 @@ before_install:
 - chmod 777 $(pwd)/distribution
 
 script:
-- docker run --rm -it -v $(pwd):/work -w /work/distribution jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/SimpleServerMock.kts
+- docker run --rm -it -v $(pwd):/work -w /work/distribution jasoet/cx-jvm:8 kscript --package ../src/main/kotlin/org/jasoet/mockserver/SimpleServerMock.kts
 
 before_deploy:
 - rm distribution/.gitkeep
-- git config --local user.name "Deny Prasetyo"
-- git config --local user.email "jasoet87@gmail.com"
-- export TRAVIS_TAG=$(cat version.txt)
 
 deploy:
   provider: releases
@@ -26,5 +23,6 @@ deploy:
   file_glob: true
   file: distribution/*
   skip_cleanup: true
+  overwrite: true
   on:
     tags: true

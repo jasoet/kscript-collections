@@ -7,6 +7,7 @@ val kscriptAnnotVersion = "1.4"
 val picoCliVersion = "3.9.6"
 val logbackVersion = "1.2.3"
 val slf4jSimpleVersion = "1.7.26"
+val snakeYamlVersion = "1.24"
 
 plugins {
     kotlin("jvm") version "1.3.21"
@@ -32,6 +33,7 @@ dependencies {
     implementation("io.ktor:ktor-gson:$ktorVersion")
     implementation("info.picocli:picocli:$picoCliVersion")
     implementation("com.github.holgerbrandl:kscript-annotations:$kscriptAnnotVersion")
+    implementation("org.yaml:snakeyaml:$snakeYamlVersion")
     implementation("org.slf4j:slf4j-simple:$slf4jSimpleVersion")
 
     testImplementation(kotlin("test"))
