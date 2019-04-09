@@ -22,8 +22,7 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key:
-    secure: TOKEN
+  api_key: $TOKEN
   file_glob: true
   file: distribution/*
   skip_cleanup: true
