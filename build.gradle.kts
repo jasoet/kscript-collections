@@ -8,9 +8,14 @@ val picoCliVersion = "3.9.6"
 val logbackVersion = "1.2.3"
 val slf4jSimpleVersion = "1.7.26"
 val snakeYamlVersion = "1.24"
+val kluentVersion = "1.49"
+val jUnitVersion = "5.4.1"
+val spekVersion = "2.0.1"
+val easyRandomVersion = "4.0.0.RC1"
 
 plugins {
     kotlin("jvm") version "1.3.21"
+    jacoco
     idea
 }
 
@@ -38,10 +43,38 @@ dependencies {
 
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit"))
+    testImplementation("org.amshove.kluent:kluent:$kluentVersion")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:$jUnitVersion")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jUnitVersion")
+    testImplementation("org.amshove.kluent:kluent:$kluentVersion")
+    testImplementation("org.jeasy:easy-random-core:$easyRandomVersion")
+    testImplementation("org.spekframework.spek2:spek-dsl-jvm:$spekVersion")
+    testRuntimeOnly("org.spekframework.spek2:spek-runner-junit5:$spekVersion")
+}
+
+jacoco {
+    toolVersion = "0.8.3"
+}
+
+tasks.jacocoTestReport {
+    group = "Reporting"
+
+    reports {
+        xml.isEnabled = true
+        html.isEnabled = true
+        csv.isEnabled = false
+    }
 }
 
 tasks.test {
-    useJUnitPlatform {}
+    finalizedBy(tasks.jacocoTestReport)
+    extensions.configure(JacocoTaskExtension::class) {
+        excludes = listOf("SimpleServerMock")
+    }
+
+    useJUnitPlatform {
+        includeEngines("spec2", "junit-jupiter")
+    }
 
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL

@@ -1,0 +1,12 @@
+- path: /test
+  content: >
+    {
+      "success": true,
+      "data": {
+        "APPLICATION_NAME": "Trivial Server",
+        "RABBIT_HOST": "s-trivial-server",
+        "RABBIT_USER": "jasoet"
+      }
+    }
+  contentType: application/json
+  statusCode: 200
