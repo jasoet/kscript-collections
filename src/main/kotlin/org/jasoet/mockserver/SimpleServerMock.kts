@@ -15,9 +15,6 @@ import io.ktor.routing.get
 import io.ktor.routing.routing
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import org.jasoet.mockserver.Cli
-import org.jasoet.mockserver.loadStream
-import org.jasoet.mockserver.readYaml
 import picocli.CommandLine
 import java.util.logging.Level
 import java.util.logging.Logger

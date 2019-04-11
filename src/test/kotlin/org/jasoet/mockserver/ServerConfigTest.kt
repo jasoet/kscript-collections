@@ -1,5 +1,6 @@
 package org.jasoet.mockserver
 
+import loadStream
 import org.amshove.kluent.shouldBeNull
 import org.amshove.kluent.shouldEqualTo
 import org.amshove.kluent.shouldNotBeEmpty
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle
+import readYaml
 import kotlin.test.assertNotNull
 
 @TestInstance(Lifecycle.PER_CLASS)
