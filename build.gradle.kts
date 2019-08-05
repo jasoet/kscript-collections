@@ -1,8 +1,8 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val kotlinVersion = "1.3.21"
-val ktorVersion = "1.1.3"
+val kotlinVersion = "1.3.40"
+val ktorVersion = "1.2.2"
 val kscriptAnnotVersion = "1.4"
 val picoCliVersion = "3.9.6"
 val logbackVersion = "1.2.3"
@@ -39,8 +39,12 @@ dependencies {
     implementation("info.picocli:picocli:$picoCliVersion")
     implementation("com.github.holgerbrandl:kscript-annotations:$kscriptAnnotVersion")
     implementation("org.yaml:snakeyaml:$snakeYamlVersion")
+    implementation("id.jasoet:fun-gson:1.0.0")
+    implementation("com.github.salomonbrys.kotson:kotson:2.5.0")
+    implementation("id.jasoet:scripts-commons:1.0.3")
     implementation("org.slf4j:slf4j-simple:$slf4jSimpleVersion")
-
+    implementation("io.ktor:ktor-client-apache:$ktorVersion")
+    implementation("io.ktor:ktor-client-gson:$ktorVersion")
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit"))
     testImplementation("org.amshove.kluent:kluent:$kluentVersion")
